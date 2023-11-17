@@ -49,7 +49,7 @@ export default function Navigation() {
                             className={classNames(
                               item.current
                                 ? "text-gray-700 border bg-gray-100"
-                                : "text-gray-500 border border-transparent hover:text-grey-700 hover:border-gray-200 ",
+                                : "text-gray-500 border border-transparent hover:text-grey-700 hover:border-gray-200 active:bg-gray-100",
                               "rounded-full px-3 py-2 text-sm font-medium"
                             )}
                             aria-current={item.current ? "page" : undefined}
@@ -180,9 +180,6 @@ export default function Navigation() {
             </>
           )}
         </Disclosure>
-
-        {/* Navigation Header */}
-        
       </div>
     </>
   );

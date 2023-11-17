@@ -33,10 +33,10 @@ ChartJS.register(ArcElement, Tooltip, Legend);
   
     return (
       <div className="flex flex-col border-0 bg-gray-100 rounded-xl px-8 py-6 gap-2">
-        <div className="text-lg font-medium">Umbrella Checker</div>
+        <div className="text-lg font-medium">Umbrella Alerts</div>
+        <div className="font-medium text-xs -mt-2 text-gray-400">Next week's guide to Umbrella Economics</div>
         <div className="flex flex-col flex-wrap items-center gap-3">
           <Doughnut data={data} />
-          <div className="text-xs font-medium text-gray-400">Check if you need the umbrella for the next 7 days</div>
         </div>
       </div>
     );

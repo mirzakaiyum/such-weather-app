@@ -57,8 +57,9 @@ export default function ChartLine({ currentWeather }) {
 
   return (
     <div className="flex flex-col grow border-0 bg-gray-100 rounded-xl px-8 py-6 gap-2">
-      <div className="text-lg font-medium">Daily Temperature</div>
-      <div className="flex flex-col items-center gap-3">
+      <div className="text-lg font-medium">Temperature Rollercoaster</div>
+      <div className="font-medium text-xs -mt-2 text-gray-400">The Zigzag of Weather</div>
+      <div className="flex flex-col grow items-center gap-3">
         <Line data={data} options={options} />
       </div>
     </div>

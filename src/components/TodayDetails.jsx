@@ -6,7 +6,8 @@ export default function TodayDetails({ currentWeather }) {
 
   return (
     <div className="flex flex-col grow border-0 bg-gray-100 rounded-xl px-8 py-6 gap-2">
-      <div className="text-lg font-medium">Weather Report</div>
+      <div className="text-lg font-medium">Today's Weather</div>
+      <div className="font-medium text-xs -mt-2 text-gray-400">More interesting than Twilight</div>
       <div className="flex flex-col items-center gap-3">
         <img
           className="max-w-[150px] brightness-50 saturate-0"
