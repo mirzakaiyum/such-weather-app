@@ -23,10 +23,10 @@ export default function TodayDetails({ currentWeather }) {
             <ArrowUpCircleIcon className="h-4 w-4 " />
             Max: {Math.round(currentWeather[0].temp.max)}°C
           </span> · 
-          <spa className="flex items-center gap-1">
+          <span className="flex items-center gap-1">
             <ArrowDownCircleIcon className="h-4 w-4 " />
             Min: {Math.round(currentWeather[0].temp.min)}°C
-          </spa>
+          </span>
         </div>
         <div className="flex flex-row flex-wrap gap-x-2 text-xs">
             <span>Humidity: {currentWeather[0].humidity}%</span>

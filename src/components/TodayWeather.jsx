@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { weatherConditions } from "./weatherConditions";
 
+
 export default function TodayWeather({ currentWeather }) {
   const [currentCondition, setCurrentCondition] = useState(null);
   const [joke, setJoke] = useState(null);
@@ -20,8 +21,6 @@ export default function TodayWeather({ currentWeather }) {
       }
     }
   }, [currentWeather]);
-  
-  
 
   function timeConverter(time) {
     const newTime = new Date(time * 1000).toLocaleTimeString("en-US", {
@@ -41,8 +40,8 @@ export default function TodayWeather({ currentWeather }) {
   }
 
   return (
-    <div className={`${weatherColor} py-6 transition ease-in-out duration-[3s] flex min-h-[40vh]`}>
-      <div className="flex flex-grow items-center justify-center mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div className={`${weatherColor} bg-contain bg-center bg-repeat py-6 transition ease-in-out duration-[3s] flex min-h-[40vh]`}>
+      <div className={`flex flex-grow items-center justify-center mx-auto max-w-7xl px-4 sm:px-6 lg:px-8`}>
         <div className="flex flex-col items-center justify-center gap-3">
           <div>
             <div className="font-semibold">{todayDate()}</div>
@@ -63,7 +62,7 @@ export default function TodayWeather({ currentWeather }) {
             )}
           </div>
 
-          <div className={`${joke ? "" : "hidden"} mt-4 border-0 p-4 bg-gray-900/5 rounded-xl font-normal`}>{joke}</div>
+          <div className={`${joke ? "" : "hidden"} mt-4 border-0 p-4 bg-gray-900/5 rounded-xl font-normal`}>{joke} 😆</div>
         </div>
       </div>
     </div>
