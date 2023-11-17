@@ -1,8 +1,6 @@
 
-![Such Weather Logo](/public/favicon.svg){ width="64" height="64" style="display: block; margin: 0 auto" }
-
-<h1 style="text-align: center; line-height:0">Such Weather</h1>
-<p style="text-align: center">A weather app with humor</p>
+# Such Weather
+A weather app with humor
 
 
 ## Table of Contents
