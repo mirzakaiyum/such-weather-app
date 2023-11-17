@@ -1,0 +1,92 @@
+export const weatherConditions = [
+  {
+    id: 1,
+    condition: "Thunderstorm",
+    joke: "Thunderstorms are nature's drum solo.",
+    color: "bg-purple-200",
+  },
+  {
+    id: 2,
+    condition: "Drizzle",
+    joke: "Drizzle is like nature's way of saying, 'I'm not in a rush.'",
+    color: "bg-teal-100",
+  },
+  {
+    id: 3,
+    condition: "Rain",
+    joke: "Rainy days are just nature's way of helping us appreciate the sunshine.",
+    color: "bg-blue-100",
+  },
+  {
+    id: 4,
+    condition: "Snow",
+    joke: "Snowflakes are like nature's confetti in winter.",
+    color: "bg-gray-100",
+  },
+  {
+    id: 5,
+    condition: "Mist",
+    joke: "Mist makes everything look a bit more mysterious.",
+    color: "bg-green-100",
+  },
+  {
+    id: 6,
+    condition: "Smoke",
+    joke: "Smoke signals from nature: time for a BBQ.",
+    color: "bg-gray-300",
+  },
+  {
+    id: 7,
+    condition: "Haze",
+    joke: "Haze is like nature's way of adding a soft filter to the world.",
+    color: "bg-orange-100",
+  },
+  {
+    id: 8,
+    condition: "Dust",
+    joke: "Dust storms: nature's way of giving us a surprise exfoliation.",
+    color: "bg-yellow-200",
+  },
+  {
+    id: 9,
+    condition: "Fog",
+    joke: "Fog is like nature's way of making the world feel a bit more cozy.",
+    color: "bg-indigo-100",
+  },
+  {
+    id: 10,
+    condition: "Sand",
+    joke: "Sandstorms: when nature decides it's time for a desert dance party.",
+    color: "bg-yellow-100",
+  },
+  {
+    id: 11,
+    condition: "Ash",
+    joke: "Volcanic ash: nature's way of reminding us who's boss.",
+    color: "bg-red-200",
+  },
+  {
+    id: 12,
+    condition: "Squall",
+    joke: "Squalls are like nature's gusty hugs.",
+    color: "bg-green-200",
+  },
+  {
+    id: 13,
+    condition: "Tornado",
+    joke: "Tornadoes: when nature decides to spin things up a bit.",
+    color: "bg-red-100",
+  },
+  {
+    id: 14,
+    condition: "Clear",
+    joke: "Clear skies: nature's way of telling us it's a good day to go outside.",
+    color: "bg-sky-100",
+  },
+  {
+    id: 15,
+    condition: "Clouds",
+    joke: "Clouds are like nature's ever-changing art in the sky.",
+    color: "bg-blue-50",
+  },
+];
