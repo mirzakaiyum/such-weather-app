@@ -19,7 +19,7 @@ function App() {
   const inputRef = useRef(null);
 
   async function locationConverter() {
-    const URL = `http://api.openweathermap.org/geo/1.0/direct?q=${inputRef.current.value}&limit=1&appid=${WEATHER_API}`;
+    const URL = `https://api.openweathermap.org/geo/1.0/direct?q=${inputRef.current.value}&limit=1&appid=${WEATHER_API}`;
     const res = await fetch(URL);
 
     if (!res.ok) {

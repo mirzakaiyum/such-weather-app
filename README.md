@@ -2,6 +2,7 @@
 # Such Weather
 A weather app with humor
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/df1f9511-03fc-4477-be65-59af7f5cfae3/deploy-status)](https://app.netlify.com/sites/such-weather/deploys)
 
 ## Table of Contents
 - [About](#about)
