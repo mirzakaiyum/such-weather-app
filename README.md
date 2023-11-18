@@ -92,6 +92,12 @@ By utilizing these APIs, Such Weather ensures that users can access reliable and
 ## Installation
 To run Such Weather, follow these steps:
 
+> :warning: 
+> **API Subscription**: This project uses OpenWeatherMap's `/onecall` endpoint to provide daily forecasting. In order to run this project locally, You need to subscribe to their API. 
+
+> :star:
+> For demonstration please use the link deployed at `https://such-weather.netlify.app/`
+
 1. Clone the repository.
     ```bash
     git clone <repository_url>
