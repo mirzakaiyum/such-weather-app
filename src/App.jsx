@@ -12,69 +12,76 @@ import ChartDoughnut from "./components/ChartDoughnut";
 const WEATHER_API = import.meta.env.VITE_WEATHER_API;
 
 function App() {
+  const [searchTerm, setSearchTerm] = useState(null);
   const [currentWeather, setCurrentWeather] = useState(null);
   const [forecast, setForecast] = useState(null);
-  const [query, setQuery] = useState(null);
+  
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const inputRef = useRef(null);
 
-  async function locationConverter() {
-    const URL = `https://api.openweathermap.org/geo/1.0/direct?q=${inputRef.current.value}&limit=1&appid=${WEATHER_API}`;
-    const res = await fetch(URL);
-
-    if (!res.ok) {
-      // Handle error
-      console.log("Error:", res.status);
-      return;
-    }
-    const data = await res.json();
-
-    const newQuery = { lat: data[0].lat, lon: data[0].lon };
-    setQuery(newQuery);
-
-    fetchWeather(newQuery);
-  }
-
-  async function fetchWeather(query) {
-    if (!query || !query.lat || !query.lon) {
-      console.error("Invalid query:", query);
-      return;
-    }
-
-    const URL = `https://api.openweathermap.org/data/3.0/onecall?lat=${query.lat}&lon=${query.lon}&exclude=minutely,hourly,alerts&units=metric&appid=${WEATHER_API}`;
-    const res = await fetch(URL);
-    if (!res.ok) {
-      // Handle error
-      console.log("Error:", res.status);
-      return;
-    }
-    const data = await res.json();
-
-    setForecast(data.daily?.filter((_, index) => index > 0 && index < 6));
-    setCurrentWeather(data.daily);
-  }
-
-  useEffect(() => {
-    if (query) {
-      fetchWeather(query);
-    }
-  }, [query]);
 
   function handleSearch(event) {
     event.preventDefault();
-    locationConverter();
+    setSearchTerm(inputRef.current.value);
   }
+
+  useEffect(function (){
+    async function fetchWeather() {
+      setLoading(true);
+      setError("");
+  
+      try {
+        if (!searchTerm) {
+          return;
+        }
+  
+        const locationURL = `https://api.openweathermap.org/geo/1.0/direct?q=${searchTerm}&limit=1&appid=${WEATHER_API}`;
+        const locationRes = await fetch(locationURL);
+  
+        if (!locationRes.ok) {
+          throw new Error(`Error: ${locationRes.status}`);
+        }
+  
+        const locationData = await locationRes.json();
+        const query = { lat: locationData[0].lat, lon: locationData[0].lon };
+  
+        const weatherURL = `https://api.openweathermap.org/data/3.0/onecall?lat=${query.lat}&lon=${query.lon}&exclude=minutely,hourly,alerts&units=metric&appid=${WEATHER_API}`;
+        const weatherRes = await fetch(weatherURL);
+  
+        if (!weatherRes.ok) {
+          throw new Error(`Error: ${weatherRes.status}`);
+        }
+  
+        const weatherData = await weatherRes.json();
+        setForecast(weatherData.daily?.filter((_, index) => index > 0 && index < 6));
+        setCurrentWeather(weatherData.daily);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+  
+    fetchWeather();
+  }, [searchTerm]);
 
   return (
     <>
       <Navigation />
       <TodayWeather currentWeather={currentWeather} />
       <Search handleSearch={handleSearch} inputRef={inputRef} />
-      <DetailedWeather query={query} forecast={forecast}>
-        <TodayDetails currentWeather={currentWeather} />
-        <FiveDayForecast forecast={forecast} />
-        <ChartLine currentWeather={currentWeather} />
-        <ChartDoughnut currentWeather={currentWeather} />
+      <DetailedWeather forecast={forecast}>
+        {loading && <p >Loading...</p>}
+        {!loading && !error && (
+          <>
+            <TodayDetails currentWeather={currentWeather} />
+            <FiveDayForecast forecast={forecast} />
+            <ChartLine currentWeather={currentWeather} />
+            <ChartDoughnut currentWeather={currentWeather} />
+          </>
+        )}
       </DetailedWeather>
     </>
   );
