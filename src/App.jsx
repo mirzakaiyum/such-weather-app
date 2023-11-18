@@ -23,7 +23,10 @@ function App() {
 
   function handleSearch(event) {
     event.preventDefault();
-    setSearchTerm(inputRef.current.value);
+    const inputValue = inputRef.current.value;
+    if (inputValue) {
+      setSearchTerm(inputValue);
+    }
   }
 
   useEffect(
@@ -32,10 +35,9 @@ function App() {
       const signal = controller.signal;
       
       async function fetchWeather() {
+        setLoading(true);
+        setError("");
         try {
-          setLoading(true);
-              setError("");
-
           if (!searchTerm) {
             return;
           }
@@ -88,18 +90,16 @@ function App() {
       <Navigation />
       <TodayWeather currentWeather={currentWeather} />
       <Search handleSearch={handleSearch} inputRef={inputRef} />
-      <DetailedWeather forecast={forecast}>
-        {loading && <p>Loading...</p>}
-        {error && <p>{error}</p>}
-        {!loading && !error && (
-          <>
-            <TodayDetails currentWeather={currentWeather} />
-            <FiveDayForecast forecast={forecast} />
-            <ChartLine currentWeather={currentWeather} />
-            <ChartDoughnut currentWeather={currentWeather} />
-          </>
-        )}
-      </DetailedWeather>
+      {loading && <p>Loading...</p>}
+      {error && <p>{error}</p>}
+      {!loading && !error && currentWeather && forecast && (
+        <DetailedWeather forecast={forecast}>
+          <TodayDetails currentWeather={currentWeather} />
+          <FiveDayForecast forecast={forecast} />
+          <ChartLine currentWeather={currentWeather} />
+          <ChartDoughnut currentWeather={currentWeather} />
+        </DetailedWeather>
+      )}
     </>
   );
 }
